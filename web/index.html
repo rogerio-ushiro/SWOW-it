@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SWOW-IT — Associazioni</title>
+<style>
+  body { font: 16px/1.4 system-ui, sans-serif; max-width: 640px; margin: 0 auto; padding: 16px; }
+  h1 { font-size: 1.1rem; margin: 0 0 12px; }
+  input { width: 100%; padding: 8px; font-size: 1rem; box-sizing: border-box; }
+  #trail { margin: 12px 0; font-size: .9rem; color: #555; }
+  #trail a { cursor: pointer; color: #06c; }
+  #cue { font-size: 1.6rem; font-weight: 600; margin: 8px 0 2px; }
+  #meta { color: #777; font-size: .85rem; margin-bottom: 8px; }
+  ol { list-style: none; padding: 0; margin: 0; }
+  li { position: relative; padding: 6px 8px; margin: 2px 0; cursor: pointer; display: flex; justify-content: space-between; }
+  li .bar { position: absolute; left: 0; top: 0; bottom: 0; background: #cfe3ff; z-index: -1; }
+  li:hover { outline: 1px solid #06c; }
+  li.end { cursor: default; color: #888; }
+  li.end:hover { outline: none; }
+  #msg { color: #a00; }
+  @media (prefers-color-scheme: dark) {
+    body { background: #181a1b; color: #e8e8e8; }
+    input { background: #222; color: #eee; border: 1px solid #555; }
+    li .bar { background: #28456e; } #trail { color: #aaa; } #trail a { color: #7db3ff; }
+  }
+</style>
+</head>
+<body>
+<h1>SWOW-IT — esplora le associazioni</h1>
+<input id="q" list="words" placeholder="Scrivi una parola…" autocomplete="off">
+<datalist id="words"></datalist>
+<div id="msg"></div>
+<div id="trail"></div>
+<div id="cue"></div>
+<div id="meta"></div>
+<ol id="list"></ol>
+<script>
+let data = {}, trail = [];
+const $ = id => document.getElementById(id);
+
+function show(word, push) {
+  const node = data[word];
+  if (!node) { $('msg').textContent = 'Parola non trovata: ' + word; return; }
+  $('msg').textContent = '';
+  if (push) trail.push(word);
+  history.replaceState(null, '', '#' + encodeURIComponent(word));
+  $('q').value = '';
+  $('cue').textContent = word;
+  $('meta').textContent = node[1].length + ' risposte più forti (su ' + node[0] + ' risposte totali; solo parole già tradotte)';
+  const max = node[1].length ? node[1][0][1] : 1;
+  $('list').replaceChildren(...node[1].map(([w, s]) => {
+    const li = document.createElement('li');
+    const bar = document.createElement('span'); bar.className = 'bar'; bar.style.width = (s / max * 100) + '%';
+    const a = document.createElement('span'); a.textContent = w;
+    const b = document.createElement('span'); b.textContent = (s * 100).toFixed(1) + '%';
+    li.append(bar, a, b);
+    if (data[w]) li.onclick = () => show(w, true); else li.className = 'end';
+    return li;
+  }));
+  const t = $('trail'); t.replaceChildren();
+  trail.forEach((w, i) => {
+    if (i) t.append(' → ');
+    if (i === trail.length - 1) { t.append(w); return; }
+    const a = document.createElement('a'); a.textContent = w;
+    a.onclick = () => { trail = trail.slice(0, i); show(w, true); };
+    t.append(a);
+  });
+}
+
+fetch('data.it.json').then(r => r.json()).then(d => {
+  data = d;
+  $('words').replaceChildren(...Object.keys(d).sort().map(w => { const o = document.createElement('option'); o.value = w; return o; }));
+  const start = decodeURIComponent(location.hash.slice(1));
+  if (start) show(start, true);
+}).catch(() => { $('msg').textContent = 'Impossibile caricare data.it.json (usa un server locale: python3 -m http.server).'; });
+
+$('q').addEventListener('change', e => { const w = e.target.value.trim(); if (w) { trail = []; show(w, true); } });
+</script>
+</body>
+</html>

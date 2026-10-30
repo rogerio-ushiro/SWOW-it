@@ -1,0 +1,201 @@
+en	it	status	nota
+Asia	Asia	nome_proprio	
+Australia	Australia	nome_proprio	
+Chicago	Chicago	nome_proprio	
+GPS	GPS	ok	
+Japan	Giappone	nome_proprio	
+Korea	Corea	nome_proprio	
+ascent	salita	ambiguo	alt. ascesa
+at	a	sem_equivalente	preposição; não mapeia 1:1 (place, home, there)
+boundary	confine	ambiguo	alt. limite
+bureaucracy	burocrazia	ok	
+coast	costa	ok	
+delta	delta	ok	
+democracy	democrazia	ok	
+depth	profondità	ok	
+election	elezione	ok	
+explore	esplorare	ok	
+guinea	cavia	sem_equivalente	guinea pig domina (pig 77; country 25; coin 22); alt. ghinea (moeda), Guinea (paese)
+marine	marino	ambiguo	alt. marine (soldato), marina
+metro	metropolitana	ok	em it. "metro" é sobretudo a unidade de medida; subway 44, city 33
+nationality	nazionalità	ok	
+nations	nazioni	ok	
+navigator	navigatore	ambiguo	em it. evoca o navigatore satellitare; en: ship, map, compass
+official	ufficiale	ambiguo	alt. funzionario
+plaice	platessa	ok	
+raft	zattera	ok	
+seagull	gabbiano	ok	
+seashell	conchiglia	ok	
+seaside	spiaggia	ambiguo	beach 50, sand 32 dominam; alt. mare, lungomare; colisão provável com beach
+stripes	strisce	ambiguo	alt. righe, gradi militari
+taxation	tassazione	ok	
+territory	territorio	ok	
+tourist	turista	ok	
+town	cittadina	ambiguo	alt. paese
+veteran	veterano	ok	
+victory	vittoria	ok	
+waves	onde	ok	
+waving	salutando	ambiguo	goodbye/hello/hand ~95 contra flag 17; alt. sventolando
+wavy	ondulato	ok	
+world	mondo	ok	
+zone	zona	ok	
+James Bond	James Bond	nome_proprio	
+Mario	Mario	nome_proprio	personaggio o nome proprio
+amusing	divertente	ok	
+baseball	baseball	ok	
+bubble wrap	pluriball	ok	
+comedy	commedia	ok	
+confetti	coriandoli	ok	falso amico: in it. "confetti" sono mandorle zuccherate
+demonstrate	dimostrare	ambiguo	alt. manifestare
+drama	dramma	ambiguo	alt. teatro, sceneggiato
+encore	bis	ok	
+fair	giusto	ambiguo	alt. fiera, chiaro, discreto
+fiddle	violino	ambiguo	informale; alt. truffa
+flute	flauto	ok	
+golf	golf	ok	
+hangman	impiccato	ambiguo	gioco dell'impiccato; alt. boia
+hilarious	esilarante	ok	
+horseshoe	ferro di cavallo	ok	
+laughter	risata	ok	
+loud	rumoroso	ambiguo	noise 29, music 27, noisy 20; alt. forte; colisão com noisy
+movement	movimento	ambiguo	alt. movimento musicale
+music	musica	ok	
+parties	feste	ambiguo	alt. partiti
+party	festa	ambiguo	alt. partito
+pause	pausa	ok	
+piano	pianoforte	ok	falso amico: in it. "piano" = lentamente / piano (di un edificio)
+popcorn	popcorn	ok	
+projection	proiezione	ok	
+refrain	astenersi	ambiguo	verbo domina (stop 63, hold back 13) sobre song 16; alt. ritornello
+rehearsal	prova	ambiguo	alt. prova generale; "prova" também = teste, evidência
+rhyme	rima	ok	
+rocker	rocker	ambiguo	empate nas respostas: cadeira ~85 contra música ~90; alt. sedia a dondolo
+rocking	dondolando	ambiguo	chair 68, horse 28; alt. dondolante, rock
+spontaneous	spontaneo	ok	
+television	televisione	ok	
+tone	tono	ambiguo	alt. tonalità, suono
+tournament	torneo	ok	
+toys	giocattoli	ok	
+video game	videogioco	ok	
+video games	videogiochi	ok	
+waltz	valzer	ok	
+McDonald's	McDonald's	nome_proprio	
+anisette	anisetta	ok	
+artichoke	carciofo	ok	
+avocado	avocado	ok	
+bakery	panetteria	ambiguo	alt. forno, pasticceria
+baloney	mortadella	ambiguo	alt. sciocchezze
+banana	banana	ok	
+bite	morso	ambiguo	alt. boccone, mordere
+blender	frullatore	ok	
+broccoli	broccoli	ok	
+butter	burro	ok	
+canteen	borraccia	ok	cantil (água/exército/camping ~110 contra refeitório ~70 nas respostas); alt. mensa
+carrot	carota	ok	
+chew	masticare	ok	
+chomp	addentare	ambiguo	bite 49, eat 38, chew 32; alt. azzannare, sgranocchiare
+corn	mais	ambiguo	alt. grano (UK), callo
+counter	bancone	ambiguo	alt. contatore, contrario
+dried	secco	ok	frutta secca, pomodori secchi
+fattening	ingrassante	ok	
+fried	fritto	ok	
+gravy	salsa di carne	sem_equivalente	conceito americano (Thanksgiving); "sugo" evocaria molho de tomate
+grinder	macinino	ambiguo	alt. smerigliatrice, panino
+honeydew	melone	ok	melone bianco (invernale)
+hunger	fame	ok	
+inedible	immangiabile	ok	
+ingredients	ingredienti	ok	
+legume	legume	ok	
+meatloaf	polpettone	ok	
+mouse	topo	ambiguo	alt. mouse (informatica)
+passion	passione	ok	
+protein	proteina	ok	
+pub	pub	ok	
+raisin	uvetta	ok	
+reservation	prenotazione	ambiguo	restaurant/hotel/dinner/booking ~100 contra riserva indiana ~40 e reticência ~27 nas respostas; alt. riserva
+spicy	piccante	ok	
+spoil	rovinare	ambiguo	alt. viziare, andare a male
+sugary	zuccherato	ok	
+tin foil	carta stagnola	ok	
+unpalatable	sgradevole	ok	
+wok	wok	ok	
+Einstein	Einstein	nome_proprio	
+Mars	Marte	nome_proprio	anche marca Mars, non tradotta
+Uranus	Urano	nome_proprio	
+amino acid	amminoacido	ok	
+astronaut	astronauta	ok	
+astronomy	astronomia	ok	
+chemist	chimico	ambiguo	alt. farmacista (UK)
+conserve	risparmiare	ambiguo	save/energy/water/environment ~110 contra jam/preserve ~40 nas respostas; alt. conservare, conserva (marmellata)
+cosmic	cosmico	ok	
+earth	terra	ok	planeta e solo: mesma polissemia em it.
+element	elemento	ok	
+evolution	evoluzione	ok	
+fractal	frattale	ok	
+gap	spazio	ambiguo	space 32, hole 24, teeth 19; alt. divario, varco, buco; colisão com space
+genetic	genetico	ok	
+inertia	inerzia	ok	
+integer	intero	ambiguo	numero intero
+interval	intervallo	ok	
+lab coat	camice	ok	alt. camice da laboratorio
+microbe	microbo	ok	
+molecular	molecolare	ok	
+neurotransmitter	neurotrasmettitore	ok	
+nuclear	nucleare	ok	
+osmosis	osmosi	ok	
+oxide	ossido	ok	
+pep	carica	ambiguo	pep talk 37, energy 25; alt. brio, grinta
+planets	pianeti	ok	
+probability	probabilità	ok	
+proven	dimostrato	ok	"provato" em it. também = esausto
+quantum	quantistico	ambiguo	physics 64, mechanics 27, leap 24; como substantivo: quanto
+quotient	quoziente	ok	
+science fiction	fantascienza	ok	
+statistics	statistica	ok	alt. statistiche (dados)
+stem	stelo	ambiguo	alt. radice (di parola), staminale
+string	filo	ambiguo	thread/yarn/ball/twine ~57, theory 31, rope 11; alt. corda, stringa, spago
+vacuum	aspirapolvere	ambiguo	máquina/limpeza ~100 contra espaço/vazio ~40 nas respostas; alt. vuoto (físico)
+vector	vettore	ok	
+velocity	velocità	ok	
+void	vuoto	ok	alt. nullo
+weightless	senza peso	ok	
+accident	incidente	ok	
+ache	dolore	ambiguo	dolore sordo; collisione con pain
+acne	acne	ok	
+artery	arteria	ok	
+carrier	portatore	ambiguo	alt. vettore, corriere
+corps	corpo	sem_equivalente	sentido militar domina (army 34, military 26); "corpo" lê-se como body; colisão
+doctor	dottore	ok	
+drug	droga	ambiguo	ilícito ~120 (weed, heroin, overdose, addict) contra medicinal ~65 nas respostas; alt. farmaco
+fracture	frattura	ok	
+groin	inguine	ok	
+healing	guarigione	ok	
+healthcare	sanità	ok	alt. assistenza sanitaria
+heartbreak	cuore spezzato	ok	"crepacuore" é literário
+hygiene	igiene	ok	
+hymen	imene	ok	
+immunity	immunità	ok	
+infect	infettare	ok	
+infectious	infettivo	ok	
+insult	insulto	ambiguo	alt. insultare
+leathery	coriaceo	ok	
+limp	zoppicare	ambiguo	alt. floscio
+lung	polmone	ok	
+malaria	malaria	ok	
+ow	ahia	ok	interiezione
+pale	pallido	ok	
+physician	medico	ok	
+pinch	pizzicare	ambiguo	alt. pizzico
+shoulder	spalla	ok	
+spinal	spinale	ok	
+splinter	scheggia	ok	
+sprain	distorsione	ok	
+stethoscope	stetoscopio	ok	
+strokes	colpi	ambiguo	não-médico ~100 (brush, swimming, pets, golf) contra ictus ~47; alt. ictus, carezze, pennellate
+symptom	sintomo	ok	
+tampon	assorbente interno	ok	falso amico: in it. "tampone" è lo swab
+toothache	mal di denti	ok	
+unwell	indisposto	ok	
+vaccination	vaccinazione	ok	
+vampire	vampiro	ok	
+ward	reparto	ambiguo	alt. pupillo

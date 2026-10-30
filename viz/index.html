@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SWOW-it — relações</title>
+<style>
+  body { font: 14px system-ui, sans-serif; margin: 0; color: #222; background: #fafafa; }
+  header { padding: 12px 16px; background: #fff; border-bottom: 1px solid #ddd; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  input { padding: 6px 8px; font-size: 14px; width: 150px; }
+  button { padding: 6px 12px; font-size: 14px; cursor: pointer; }
+  #info { padding: 8px 16px; color: #555; min-height: 20px; }
+  svg { width: 100%; height: 70vh; background: #fff; border-top: 1px solid #eee; }
+  text { font-size: 12px; text-anchor: middle; pointer-events: none; }
+  .node { cursor: pointer; }
+  .node:hover circle { stroke: #000; stroke-width: 2; }
+</style>
+</head>
+<body>
+<header>
+  <label>Palavra A <input id="a" list="words" value="dog"></label>
+  <label>Palavra B (opcional) <input id="b" list="words" value="cat"></label>
+  <button id="go">Ver</button>
+  <small>Clique num nó para recentrar em A.</small>
+  <datalist id="words"></datalist>
+</header>
+<div id="info"></div>
+<svg id="g" viewBox="0 0 1000 600"></svg>
+<script src="data.js"></script>
+<script>
+const { tr, assoc } = window.SWOW;
+const NS = "http://www.w3.org/2000/svg";
+const svg = document.getElementById("g"), info = document.getElementById("info");
+const inA = document.getElementById("a"), inB = document.getElementById("b");
+
+document.getElementById("words").innerHTML =
+  Object.keys(assoc).sort().map(w => `<option value="${w}">`).join("");
+
+const label = w => (tr[w] && tr[w].toLowerCase() !== w.toLowerCase() ? `${w} / ${tr[w]}` : w);
+const el = (tag, attrs, parent) => {
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  (parent || svg).appendChild(e);
+  return e;
+};
+
+// Draw a node (circle + label); `onclick` recenters on that word when it is a known cue.
+function node(w, x, y, r, color) {
+  const g = el("g", { class: "node", transform: `translate(${x},${y})` });
+  el("circle", { r, fill: color, stroke: "#555" }, g);
+  const t = el("text", { y: r + 13 }, g);
+  t.textContent = label(w);
+  g.addEventListener("click", () => { if (assoc[w]) { inA.value = w; inB.value = ""; draw(); } });
+  return [x, y];
+}
+function edge(p, q, s, color) {
+  el("line", { x1: p[0], y1: p[1], x2: q[0], y2: q[1], stroke: color, "stroke-width": 1 + s * 40, opacity: 0.55 });
+}
+
+function draw() {
+  svg.innerHTML = "";
+  const a = inA.value.trim(), b = inB.value.trim();
+  if (!assoc[a]) { info.textContent = `"${a}" não está nos cues traduzidos até agora (Story 2, só o seed).`; return; }
+  if (!b || !assoc[b]) {
+    if (b) info.textContent = `"${b}" não está nos cues traduzidos; mostrando só ${a}.`;
+    else info.textContent = `${label(a)}: as ${assoc[a].length} respostas mais fortes (espessura = força).`;
+    const c = [500, 300], n = assoc[a].length;
+    assoc[a].forEach(([w, s], i) => {
+      const ang = (2 * Math.PI * i) / n - Math.PI / 2;
+      const p = [500 + 380 * Math.cos(ang), 300 + 230 * Math.sin(ang)];
+      edge(c, p, s, "#4a7");
+      node(w, p[0], p[1], 6 + s * 60, assoc[w] ? "#cde" : "#eee");
+    });
+    node(a, c[0], c[1], 18, "#fc6");
+    return;
+  }
+  // Two words: hubs at the sides, shared associates in the middle column.
+  const A = new Map(assoc[a]), B = new Map(assoc[b]);
+  const shared = [...A.keys()].filter(w => B.has(w));
+  const onlyA = [...A.keys()].filter(w => !B.has(w)), onlyB = [...B.keys()].filter(w => !A.has(w));
+  const ca = [90, 300], cb = [910, 300];
+  const col = (list, x) => list.map((w, i) => [w, x, 40 + (520 * (i + 0.5)) / Math.max(list.length, 1)]);
+  const ab = A.get(b), ba = B.get(a);
+  info.textContent = `${label(a)} × ${label(b)}: ${shared.length} respostas em comum` +
+    (ab ? `; ${b} é resposta de ${a} (${ab})` : "") + (ba ? `; ${a} é resposta de ${b} (${ba})` : "") + ".";
+  col(onlyA, 250).forEach(([w, x, y]) => { edge(ca, [x, y], A.get(w), "#4a7"); node(w, x, y, 5 + A.get(w) * 50, "#eee"); });
+  col(onlyB, 750).forEach(([w, x, y]) => { edge(cb, [x, y], B.get(w), "#47a"); node(w, x, y, 5 + B.get(w) * 50, "#eee"); });
+  col(shared, 500).forEach(([w, x, y]) => {
+    edge(ca, [x, y], A.get(w), "#4a7"); edge(cb, [x, y], B.get(w), "#47a");
+    node(w, x, y, 6 + (A.get(w) + B.get(w)) * 30, "#f99");
+  });
+  node(a, ca[0], ca[1], 18, "#fc6"); node(b, cb[0], cb[1], 18, "#fc6");
+}
+document.getElementById("go").addEventListener("click", draw);
+[inA, inB].forEach(i => i.addEventListener("keydown", e => e.key === "Enter" && draw()));
+draw();
+</script>
+</body>
+</html>
